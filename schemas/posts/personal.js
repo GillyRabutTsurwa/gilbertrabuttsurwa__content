@@ -24,6 +24,10 @@ export default defineType({
       title: 'Author',
       type: 'reference',
       to: {type: 'author'},
+      // NEWPASS: works perfectly. quand je fais un nouveau document, il aura une valeur de defaut d'auteur (qui sera moi, bien-sûr)
+      initialValue: {
+        _ref: '9e5346d6-6fea-4d06-a2db-07a1a74468fb',
+      },
     }),
     defineField({
       name: 'mainImage',
@@ -32,17 +36,6 @@ export default defineType({
       options: {
         hotspot: true,
       },
-    }),
-    defineField({
-      name: 'categories',
-      title: 'Categories',
-      type: 'array',
-      of: [{type: 'reference', to: {type: 'category'}}],
-    }),
-    defineField({
-      name: 'publishedAt',
-      title: 'Published at',
-      type: 'datetime',
     }),
     defineField({
       name: 'body',
