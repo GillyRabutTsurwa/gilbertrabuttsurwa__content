@@ -30,6 +30,11 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'publishedAt',
+      title: 'Date Published',
+      type: 'datetime',
+    }),
+    defineField({
       name: 'mainImage',
       title: 'Main image',
       type: 'image',
@@ -41,6 +46,11 @@ export default defineType({
       name: 'body',
       title: 'Body',
       type: 'blockContent',
+    }),
+    defineField({
+      name: 'needsAuthentication',
+      title: 'Needs Authentication To Read?',
+      type: 'boolean',
     }),
   ],
 
