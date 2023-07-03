@@ -29,6 +29,19 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'publishedAt',
+      title: 'Date Published',
+      type: 'datetime',
+    }),
+    defineField({
+      name: 'thumbnail',
+      title: 'Thumbnail',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
       name: 'mainImage',
       title: 'Main image',
       type: 'image',
@@ -40,6 +53,19 @@ export default defineType({
       name: 'body',
       title: 'Body',
       type: 'blockContent',
+    }),
+    defineField({
+      title: 'Categories',
+      name: 'categories',
+      type: 'array',
+      of: [
+        {
+          type: 'string',
+        },
+      ],
+      options: {
+        layout: 'tags',
+      },
     }),
   ],
 
