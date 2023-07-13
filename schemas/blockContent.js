@@ -63,14 +63,17 @@ export default defineType({
       type: 'image',
       options: {hotspot: true},
     }),
-    // defineArrayMember({
+    defineArrayMember({
+      type: 'code',
+      name: 'code',
+      title: 'Code Block',
+      options: {
+        withFilename: true,
+      },
+    }),
+    // {
     //   type: 'code',
     //   name: 'codeInput',
-    //   title: 'Code',
-    // }),
-    {
-      type: 'code',
-      name: 'codeInput',
-    },
+    // },
   ],
 })
