@@ -1,4 +1,4 @@
-import {defineType, defineArrayMember, defineField} from 'sanity'
+import {defineType, defineArrayMember} from 'sanity'
 
 /**
  * This is the schema definition for the rich text fields used for
@@ -63,17 +63,5 @@ export default defineType({
       type: 'image',
       options: {hotspot: true},
     }),
-    defineArrayMember({
-      type: 'code',
-      name: 'code',
-      title: 'Code Block',
-      options: {
-        withFilename: true,
-      },
-    }),
-    // {
-    //   type: 'code',
-    //   name: 'codeInput',
-    // },
   ],
 })

@@ -3,9 +3,9 @@ import {deskTool} from 'sanity/desk'
 import {visionTool} from '@sanity/vision'
 import {RobotIcon, RocketIcon} from '@sanity/icons'
 import {codeInput} from '@sanity/code-input'
+import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemas'
 
-//lets try this. works
 import Logo from './components/Logo'
 
 // try this
@@ -62,46 +62,25 @@ export const myTheme = buildLegacyTheme({
 
 console.log(codeInput())
 
-export default defineConfig([
-  {
-    name: 'production',
-    title: 'Production',
+export default defineConfig({
+  name: 'default',
+  title: 'blog',
 
-    projectId: 'g014cs9v',
-    dataset: 'production',
-    basePath: '/production',
+  projectId: 'g014cs9v',
+  dataset: 'production',
 
-    plugins: [deskTool(), visionTool(), codeInput()],
-    icon: RocketIcon,
+  plugins: [deskTool(), visionTool(), codeInput()],
+  icon: RocketIcon,
 
-    schema: {
-      types: schemaTypes,
-    },
-    studio: {
-      components: {
-        logo: Logo,
-      },
-    },
-    theme: myTheme,
+  schema: {
+    types: schemaTypes,
   },
-  {
-    name: 'staging',
-    title: 'Staging',
 
-    projectId: 'g014cs9v',
-    dataset: 'staging',
-    basePath: '/staging',
-
-    plugins: [deskTool(), visionTool(), codeInput()],
-    icon: RobotIcon,
-
-    schema: {
-      types: schemaTypes,
+  studio: {
+    components: {
+      logo: Logo,
     },
   },
-  // {
-  //   studio: {
-  //     logo: Logo,
-  //   },
-  // },
-])
+
+  theme: myTheme,
+})
