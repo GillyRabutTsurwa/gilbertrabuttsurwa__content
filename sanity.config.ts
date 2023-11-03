@@ -3,7 +3,6 @@ import {deskTool} from 'sanity/desk'
 import {visionTool} from '@sanity/vision'
 import {RobotIcon, RocketIcon} from '@sanity/icons'
 import {codeInput} from '@sanity/code-input'
-import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemas'
 
 import Logo from './components/Logo'
@@ -18,13 +17,13 @@ const props = {
   '--my-red': '#db4437',
   '--my-yellow': '#f4b400',
   '--my-green': '#0f9d58',
-  '--my-primary': '#b3531a',
+  '--my-primary': '#1a2934',
 }
 
 export const myTheme = buildLegacyTheme({
   /* Base theme colors */
-  '--black': props['--my-black'],
-  '--white': props['--my-white'],
+  // '--black': props['--my-black'],
+  // '--white': props['--my-white'],
 
   '--gray': '#666',
   '--gray-base': '#666',
@@ -33,14 +32,12 @@ export const myTheme = buildLegacyTheme({
   '--component-text-color': props['--my-primary'],
 
   /* Brand */
-  // '--brand-primary': props['--my-blue'],
-  '--brand-primary': 'pink',
+  '--brand-primary': props['--my-primary'],  //NOTE: changes background colours of buttons that are active
 
   // Default button
-  '--default-button-color': '#666',
-  // '--default-button-primary-color': props['--my-blue'],
-  '--default-button-primary-color': props['--my-primary'],
-  '--default-button-success-color': props['--my-green'],
+  '--default-button-color': 'pink',
+  '--default-button-primary-color': props['--my-primary'], //NOTE: for the buttons for selecting content types (under content)
+  '--default-button-success-color': props['--my-green'], //NOTE: for (notably) the publish button
   '--default-button-warning-color': props['--my-yellow'],
   '--default-button-danger-color': props['--my-red'],
 
@@ -52,12 +49,8 @@ export const myTheme = buildLegacyTheme({
 
   /* Navbar */
   '--main-navigation-color': props['--my-primary'],
-  '--main-navigation-text': 'pink',
-  // '--main-navigation-color--inverted': props['--my-red'],
   '--main-navigation-color--inverted': props['--my-blanc'],
-
   '--focus-color': props['--my-primary'],
-  '--focus-bg': props['--my-yellow'],
 })
 
 console.log(codeInput())
