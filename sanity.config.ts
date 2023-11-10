@@ -18,9 +18,10 @@ const props = {
   '--my-yellow': '#f4b400',
   '--my-green': '#0f9d58',
   '--my-primary': '#1a2934',
+  '--my-secondary': '#510400',
 }
 
-export const myTheme = buildLegacyTheme({
+export const myFirstTheme = buildLegacyTheme({
   /* Base theme colors */
   // '--black': props['--my-black'],
   // '--white': props['--my-white'],
@@ -32,7 +33,7 @@ export const myTheme = buildLegacyTheme({
   '--component-text-color': props['--my-primary'],
 
   /* Brand */
-  '--brand-primary': props['--my-primary'],  //NOTE: changes background colours of buttons that are active
+  '--brand-primary': props['--my-primary'], //NOTE: changes background colours of buttons that are active
 
   // Default button
   '--default-button-color': 'pink',
@@ -53,27 +54,85 @@ export const myTheme = buildLegacyTheme({
   '--focus-color': props['--my-primary'],
 })
 
+export const mySecondTheme = buildLegacyTheme({
+  /* Base theme colors */
+  // '--black': props['--my-black'],
+  // '--white': props['--my-white'],
+
+  '--gray': '#666',
+  '--gray-base': '#666',
+
+  '--component-bg': props['--my-blanc'],
+  '--component-text-color': props['--my-secondary'],
+
+  /* Brand */
+  '--brand-primary': props['--my-secondary'], //NOTE: changes background colours of buttons that are active
+
+  // Default button
+  '--default-button-color': 'pink',
+  '--default-button-primary-color': props['--my-secondary'], //NOTE: for the buttons for selecting content types (under content)
+  '--default-button-success-color': props['--my-green'], //NOTE: for (notably) the publish button
+  '--default-button-warning-color': props['--my-yellow'],
+  '--default-button-danger-color': props['--my-red'],
+
+  /* State */
+  '--state-info-color': props['--my-blue'],
+  '--state-success-color': props['--my-green'],
+  '--state-warning-color': props['--my-yellow'],
+  '--state-danger-color': props['--my-red'],
+
+  /* Navbar */
+  '--main-navigation-color': props['--my-secondary'],
+  '--main-navigation-color--inverted': props['--my-blanc'],
+  '--focus-color': props['--my-secondary'],
+})
+
 console.log(codeInput())
 
-export default defineConfig({
-  name: 'default',
-  title: 'blog',
+export default defineConfig([
+  {
+    name: 'production',
+    title: 'Production',
+    projectId: 'g014cs9v',
+    dataset: 'production',
+    basePath: '/prodction',
 
-  projectId: 'g014cs9v',
-  dataset: 'production',
+    plugins: [deskTool(), visionTool(), codeInput()],
+    icon: RocketIcon,
 
-  plugins: [deskTool(), visionTool(), codeInput()],
-  icon: RocketIcon,
-
-  schema: {
-    types: schemaTypes,
-  },
-
-  studio: {
-    components: {
-      logo: Logo,
+    schema: {
+      types: schemaTypes,
     },
+
+    studio: {
+      components: {
+        logo: Logo,
+      },
+    },
+
+    theme: myFirstTheme,
   },
 
-  theme: myTheme,
-})
+  {
+    name: 'staging',
+    title: 'Staging',
+    projectId: 'g014cs9v',
+    dataset: 'staging',
+    basePath: '/staging',
+
+    plugins: [deskTool(), visionTool(), codeInput()],
+    icon: RobotIcon,
+
+    schema: {
+      types: schemaTypes,
+    },
+
+    studio: {
+      components: {
+        logo: Logo,
+      },
+    },
+
+    theme: mySecondTheme,
+  },
+])

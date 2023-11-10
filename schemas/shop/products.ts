@@ -1,9 +1,12 @@
 import {defineField, defineType} from 'sanity'
+import {TrolleyIcon} from '@sanity/icons'
 
 export default defineType({
   name: 'product',
   title: 'Products',
   type: 'document',
+  icon: TrolleyIcon,
+
   fields: [
     defineField({
       name: 'name',
@@ -56,8 +59,8 @@ export default defineType({
       media: 'mainImage',
     },
     prepare(selection) {
-      const {name} = selection
-      return {...selection, subtitle: name}
+      const {title} = selection
+      return {...selection, subtitle: title}
     },
   },
 })
