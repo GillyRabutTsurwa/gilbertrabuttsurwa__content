@@ -73,6 +73,16 @@ export default defineType({
       title: 'Needs Authentication To Read?',
       type: 'boolean',
     }),
+    defineField({
+      name: 'colourPrimary',
+      title: 'Primary Colour',
+      type: 'color',
+    }),
+    defineField({
+      name: 'colourSecondary',
+      title: 'Secondary Colour',
+      type: 'color',
+    }),
   ],
 
   preview: {

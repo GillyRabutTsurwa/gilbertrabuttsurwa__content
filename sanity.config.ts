@@ -3,6 +3,7 @@ import {deskTool} from 'sanity/desk'
 import {visionTool} from '@sanity/vision'
 import {RobotIcon, RocketIcon} from '@sanity/icons'
 import {codeInput} from '@sanity/code-input'
+import {colorInput} from '@sanity/color-input'
 import {schemaTypes} from './schemas'
 
 import Logo from './components/Logo'
@@ -97,7 +98,7 @@ export default defineConfig([
     dataset: 'production',
     basePath: '/prodction',
 
-    plugins: [deskTool(), visionTool(), codeInput()],
+    plugins: [deskTool(), visionTool(), codeInput(), colorInput()],
     icon: RocketIcon,
 
     schema: {
@@ -120,7 +121,7 @@ export default defineConfig([
     dataset: 'staging',
     basePath: '/staging',
 
-    plugins: [deskTool(), visionTool(), codeInput()],
+    plugins: [deskTool(), visionTool(), codeInput(), colorInput()],
     icon: RobotIcon,
 
     schema: {
