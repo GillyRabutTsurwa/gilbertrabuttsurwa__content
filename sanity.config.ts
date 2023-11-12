@@ -96,7 +96,7 @@ export default defineConfig([
     title: 'Production',
     projectId: 'g014cs9v',
     dataset: 'production',
-    basePath: '/prodction',
+    basePath: '/production',
 
     plugins: [deskTool(), visionTool(), codeInput(), colorInput()],
     icon: RocketIcon,
