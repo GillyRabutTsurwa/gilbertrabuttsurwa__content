@@ -1,6 +1,8 @@
 import {defineConfig, buildLegacyTheme} from 'sanity'
 import {deskTool} from 'sanity/desk'
 import {visionTool} from '@sanity/vision'
+import {presentationTool} from 'sanity/presentation'
+import {enableOverlays} from '@sanity/overlays'
 import {RobotIcon, RocketIcon} from '@sanity/icons'
 import {codeInput} from '@sanity/code-input'
 import {colorInput} from '@sanity/color-input'
@@ -90,6 +92,9 @@ export const mySecondTheme = buildLegacyTheme({
 
 console.log(codeInput())
 
+const SANITY_STUDIO_PREVIEW_URL =
+  process.env.SANITY_STUDIO_PREVIEW_URL || 'http://localhost:3000/blog'
+
 export default defineConfig([
   {
     name: 'production',
@@ -98,7 +103,18 @@ export default defineConfig([
     dataset: 'production',
     basePath: '/production',
 
-    plugins: [deskTool(), visionTool(), codeInput(), colorInput()],
+    plugins: [
+      deskTool(),
+      visionTool(),
+      codeInput(),
+      colorInput(),
+      presentationTool({
+        previewUrl: SANITY_STUDIO_PREVIEW_URL,
+      }),
+      enableOverlays({
+        allowStudioOrigin: 'http://localhost:3333/production/',
+      }),
+    ],
     icon: RocketIcon,
 
     schema: {
@@ -121,7 +137,18 @@ export default defineConfig([
     dataset: 'staging',
     basePath: '/staging',
 
-    plugins: [deskTool(), visionTool(), codeInput(), colorInput()],
+    plugins: [
+      deskTool(),
+      visionTool(),
+      codeInput(),
+      colorInput(),
+      presentationTool({
+        previewUrl: SANITY_STUDIO_PREVIEW_URL,
+      }),
+      enableOverlays({
+        allowStudioOrigin: 'http://localhost:3333/production/',
+      }),
+    ],
     icon: RobotIcon,
 
     schema: {
@@ -137,3 +164,7 @@ export default defineConfig([
     theme: mySecondTheme,
   },
 ])
+
+// const disable = enableOverlays({
+//   allowStudioOrigin: 'http://localhost:3333/production',
+// })
