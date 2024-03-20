@@ -1,12 +1,13 @@
 import {defineConfig, buildLegacyTheme} from 'sanity'
-import {deskTool} from 'sanity/desk'
+import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {presentationTool} from 'sanity/presentation'
 import {enableOverlays} from '@sanity/overlays'
-import {RobotIcon, RocketIcon} from '@sanity/icons'
+import {EditIcon, DesktopIcon, RobotIcon, RocketIcon, UserIcon} from '@sanity/icons'
 import {codeInput} from '@sanity/code-input'
 import {colorInput} from '@sanity/color-input'
 import {schemaTypes} from './schemas'
+import './custom.css'
 
 import Logo from './components/Logo'
 
@@ -104,7 +105,46 @@ export default defineConfig([
     basePath: '/production',
 
     plugins: [
-      deskTool(),
+      structureTool({
+        structure: (S) => {
+          return S.list()
+            .title("Gil's Content")
+            .items([
+              S.listItem()
+                .title('Posts')
+                .icon(EditIcon)
+                .child(
+                  S.list()
+                    .title('Posts')
+                    .items([
+                      S.listItem()
+                        .title('Personal')
+                        .icon(UserIcon)
+                        .child((categoryId) =>
+                          S.documentList()
+                            .title('Personal Posts')
+                            .filter('_type == "post" && postGenre == "personal"')
+                            .params({categoryId}),
+                        ),
+                      S.listItem()
+                        .title('Tech')
+                        .icon(DesktopIcon)
+                        .child((categoryId) =>
+                          S.documentList()
+                            .title('Tech Posts')
+                            .filter('_type == "post" && postGenre == "tech"')
+                            .params({categoryId}),
+                        ),
+                    ]),
+                ),
+              // The rest of this document is from the original manual grouping in this series of articles
+              //NOTE: ca affiche les autres documents
+              ...S.documentTypeListItems().filter(
+                (listItem) => !['post'].includes(listItem.getId()),
+              ),
+            ])
+        },
+      }),
       visionTool(),
       codeInput(),
       colorInput(),
@@ -138,7 +178,7 @@ export default defineConfig([
     basePath: '/staging',
 
     plugins: [
-      deskTool(),
+      structureTool(),
       visionTool(),
       codeInput(),
       colorInput(),
