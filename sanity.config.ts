@@ -178,7 +178,46 @@ export default defineConfig([
     basePath: '/staging',
 
     plugins: [
-      structureTool(),
+      structureTool({
+        structure: (S) => {
+          return S.list()
+            .title("Gil's Content")
+            .items([
+              S.listItem()
+                .title('Posts')
+                .icon(EditIcon)
+                .child(
+                  S.list()
+                    .title('Posts')
+                    .items([
+                      S.listItem()
+                        .title('Personal')
+                        .icon(UserIcon)
+                        .child((categoryId) =>
+                          S.documentList()
+                            .title('Personal Posts')
+                            .filter('_type == "post" && postGenre == "personal"')
+                            .params({categoryId}),
+                        ),
+                      S.listItem()
+                        .title('Tech')
+                        .icon(DesktopIcon)
+                        .child((categoryId) =>
+                          S.documentList()
+                            .title('Tech Posts')
+                            .filter('_type == "post" && postGenre == "tech"')
+                            .params({categoryId}),
+                        ),
+                    ]),
+                ),
+              // The rest of this document is from the original manual grouping in this series of articles
+              //NOTE: ca affiche les autres documents
+              ...S.documentTypeListItems().filter(
+                (listItem) => !['post'].includes(listItem.getId()),
+              ),
+            ])
+        },
+      }),
       visionTool(),
       codeInput(),
       colorInput(),
