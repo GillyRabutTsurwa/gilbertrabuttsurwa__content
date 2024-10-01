@@ -6,4 +6,5 @@ export default defineCliConfig({
     projectId: "g014cs9v",
     dataset: "production",
   },
+  studioHost: "gilbertrabuttsurwa",
 });
