@@ -26,3 +26,5 @@
 *.tsbuildinfo
 
 package-lock.json
+.env
+.env.*

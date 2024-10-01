@@ -21,6 +21,10 @@ export default defineType({
       title: 'Body',
       name: 'body',
     },
+    {
+      title: 'Colours',
+      name: 'colours',
+    },
   ],
 
   fields: [
@@ -129,11 +133,13 @@ export default defineType({
       name: 'colourPrimary',
       title: 'Primary Colour',
       type: 'color',
+      group: 'colours',
     }),
     defineField({
       name: 'colourSecondary',
       title: 'Secondary Colour',
       type: 'color',
+      group: 'colours',
       // hidden: (settings) => {
       //   console.log(settings.currentUser)
       //   console.log(settings.value)
