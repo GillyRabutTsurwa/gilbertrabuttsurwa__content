@@ -41,9 +41,9 @@ export default defineType({
       // media: "mainImage",
     },
     prepare(selection) {
-      console.log(selection);
+      // console.log(selection);
       const { title } = selection;
-      console.log(selection);
+      // console.log(selection);
       return { ...selection, title: title };
     },
   },
