@@ -54,7 +54,7 @@ export const settings = (envName: string, envID: string = "g014cs9v", envTheme: 
       presentationTool({
         previewUrl: {
           origin: process.env.SANITY_STUDIO_PREVIEW_URL,
-          // preview: "/",
+          preview: "/",
           previewMode: {
             enable: "/preview/enable",
             disable: "/preview/disable",
